@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.875rem;
+
+    /* TradeFlow Dark Fintech Theme */
+    --background: 0.155 0.025 245;
+    --foreground: 0.925 0.012 240;
+    --card: 0.175 0.028 245;
+    --card-foreground: 0.925 0.012 240;
+    --popover: 0.175 0.028 245;
+    --popover-foreground: 0.925 0.012 240;
+    --primary: 0.56 0.22 255;
+    --primary-foreground: 0.98 0.005 240;
+    --secondary: 0.22 0.035 245;
+    --secondary-foreground: 0.925 0.012 240;
+    --muted: 0.22 0.035 245;
+    --muted-foreground: 0.62 0.04 240;
+    --accent: 0.56 0.22 255;
+    --accent-foreground: 0.98 0.005 240;
+    --destructive: 0.61 0.21 22;
+    --destructive-foreground: 0.98 0.005 240;
+    --border: 0.31 0.05 245;
+    --input: 0.21 0.03 245;
+    --ring: 0.56 0.22 255;
+    --chart-1: 0.56 0.22 255;
+    --chart-2: 0.65 0.19 150;
+    --chart-3: 0.61 0.21 22;
+    --chart-4: 0.75 0.15 85;
+    --chart-5: 0.55 0.2 290;
+    --sidebar: 0.175 0.028 245;
+    --sidebar-foreground: 0.925 0.012 240;
+    --sidebar-primary: 0.56 0.22 255;
+    --sidebar-primary-foreground: 0.98 0.005 240;
+    --sidebar-accent: 0.22 0.035 245;
+    --sidebar-accent-foreground: 0.925 0.012 240;
+    --sidebar-border: 0.31 0.05 245;
+    --sidebar-ring: 0.56 0.22 255;
+
+    /* Custom tokens */
+    --surface-elevated: 0.205 0.032 245;
+    --success: 0.68 0.18 150;
+    --success-foreground: 0.98 0.005 240;
+    --trade-blue: 0.56 0.22 255;
+    --trade-green: 0.68 0.18 150;
+    --trade-red: 0.61 0.21 22;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .surface {
+    background-color: oklch(var(--card));
+    border: 1px solid oklch(var(--border));
+  }
+
+  .surface-elevated {
+    background-color: oklch(var(--surface-elevated));
+    border: 1px solid oklch(var(--border));
+  }
+
+  .text-success {
+    color: oklch(var(--success));
+  }
+
+  .text-trade-red {
+    color: oklch(var(--trade-red));
+  }
+
+  .bg-success {
+    background-color: oklch(var(--success));
+  }
+
+  .bg-trade-red {
+    background-color: oklch(var(--trade-red));
+  }
+
+  .border-success {
+    border-color: oklch(var(--success));
+  }
+
+  .border-trade-red {
+    border-color: oklch(var(--trade-red));
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 20px oklch(var(--trade-blue) / 0.25);
+  }
+
+  .glow-green {
+    box-shadow: 0 0 20px oklch(var(--trade-green) / 0.3);
+  }
+
+  .glow-red {
+    box-shadow: 0 0 20px oklch(var(--trade-red) / 0.3);
+  }
+}
+
+/* Animations */
+@keyframes spin-ring {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-ring {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes step-enter {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-spin-ring {
+  animation: spin-ring 1s linear infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.45s ease-out both;
+}
+
+.animate-fade-in-scale {
+  animation: fade-in-scale 0.4s ease-out both;
+}
+
+.animate-step-enter {
+  animation: step-enter 0.35s ease-out both;
+}
+
+.screen-transition {
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.screen-enter {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.screen-exit {
+  opacity: 0;
+  transform: translateY(-8px);
+}
